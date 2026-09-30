@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little World for Priyanka 💜</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#080713;
+  --pink:#ff6fce;
+  --blue:#75caff;
+  --purple:#a68aff;
+  --card:#151329;
+  --text:#fff;
+  --muted:#b8b2d6;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,sans-serif;
+  overflow-x:hidden;
+}
+
+button,input{font:inherit}
+button{cursor:pointer}
+
+/* INTRO */
+
+#intro{
+  height:100vh;
+  min-height:550px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse at 50% 40%,#392050,#11102b 50%,#05040c);
+}
+
+#stars{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+
+.star{
+  position:absolute;
+  color:#fff;
+  animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+  to{
+    opacity:.15;
+    transform:scale(.5);
+  }
+}
+
+.introHeart{
+  font-size:65px;
+  animation:beat 1.5s infinite;
+}
+
+@keyframes beat{
+  50%{transform:scale(1.15)}
+}
+
+.introTitle{
+  font-size:clamp(35px,9vw,76px);
+  font-weight:900;
+  background:linear-gradient(90deg,#8be4ff,#ff78d7,#c7a0ff);
+  color:transparent;
+  background-clip:text;
+  margin:15px;
+}
+
+.introSub{
+  color:#d2c9ed;
+  letter-spacing:3px;
+  font-size:12px;
+}
+
+.startBtn{
+  margin-top:40px;
+  padding:15px 30px;
+  border-radius:40px;
+  border:1px solid #e8a1ff;
+  background:linear-gradient(100deg,#9b42b9,#4947a8);
+  color:white;
+  box-shadow:0 0 30px #a04be555;
+  animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+  50%{transform:scale(1.05)}
+}
+
+/* APP */
+
+#app{
+  display:none;
+  min-height:100vh;
+  padding:25px 20px 100px;
+}
+
+.topline{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  font-size:12px;
+  color:#b6b1db;
+}
+
+.header{
+  text-align:center;
+  padding:25px 0;
+}
+
+.header h1{
+  font-size:clamp(23px,5vw,38px);
+}
+
+.header p{
+  color:var(--muted);
+  margin-top:10px;
+}
+
+.page{
+  display:none;
+  animation:fade .35s ease;
+}
+
+.page.active{
+  display:block;
+}
+
+@keyframes fade{
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.container{
+  max-width:850px;
+  margin:auto;
+}
+
+.card{
+  background:linear-gradient(145deg,#1b1733,#101021);
+  border:1px solid #3c315a;
+  border-radius:20px;
+  padding:23px;
+  margin:15px 0;
+  box-shadow:0 10px 35px #0004;
+}
+
+h2{
+  font-size:24px;
+  margin-bottom:15px;
+}
+
+p{
+  line-height:1.7;
+}
+
+.muted{
+  color:var(--muted);
+}
+
+.hero{
+  text-align:center;
+  padding:35px 10px;
+}
+
+.hero h1{
+  font-size:clamp(43px,10vw,85px);
+  background:linear-gradient(90deg,#86dfff,#ff83d7);
+  color:transparent;
+  background-clip:text;
+  margin:12px 0;
+}
+
+.hero p{
+  color:#c6bddf;
+}
+
+.heroHeart{
+  font-size:50px;
+  animation:beat 1.5s infinite;
+}
+
+.btn{
+  padding:12px 20px;
+  border-radius:30px;
+  border:1px solid #b66ae6;
+  color:white;
+  background:linear-gradient(100deg,#8435a9,#414aab);
+  margin:10px 5px 0 0;
+  transition:.2s;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 0 20px #a45ddd55;
+}
+
+.btn.secondary{
+  background:#201b38;
+  border-color:#51436f;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:15px;
+}
+
+.bigText{
+  font-size:clamp(20px,4vw,29px);
+  line-height:1.8;
+  color:#ffd0f2;
+  text-align:center;
+  padding:20px 0;
+}
+
+.divider{
+  height:1px;
+  background:#39314f;
+  margin:20px 0;
+}
+
+/* FRIENDSHIP BADGE */
+
+.friendBadge{
+  text-align:center;
+  padding:18px;
+  margin:15px 0;
+  border-radius:16px;
+  background:linear-gradient(120deg,#251c42,#17152d);
+  border:1px solid #49396c;
+}
+
+.friendBadge strong{
+  color:#ff9bdd;
+}
+
+/* MEMORY WALL */
+
+.memoryGrid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.memory{
+  min-height:145px;
+  border:1px solid #40345f;
+  background:linear-gradient(145deg,#282044,#17152e);
+  border-radius:16px;
+  padding:18px;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.memory:hover{
+  transform:translateY(-5px);
+  border-color:var(--pink);
+}
+
+.memory span{
+  font-size:35px;
+  margin-bottom:12px;
+}
+
+.memory p{
+  color:#bdb6d5;
+  margin-top:8px;
+  font-size:13px;
+}
+
+/* QUIZ */
+
+.answerBtn{
+  display:block;
+  width:100%;
+  text-align:left;
+  background:#201d3a;
+  border:1px solid #40375e;
+  color:white;
+  padding:15px;
+  border-radius:12px;
+  margin:10px 0;
+}
+
+.answerBtn:hover{
+  background:#3a2a56;
+}
+
+.answerBtn:disabled{
+  opacity:.7;
+}
+
+.progress{
+  height:9px;
+  background:#2c2545;
+  border-radius:20px;
+  overflow:hidden;
+  margin:15px 0;
+}
+
+.fill{
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,#76d9ff,#ff6fce);
+  transition:.3s;
+}
+
+/* BUCKET LIST */
+
+.plan{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:15px;
+  background:#201b35;
+  border-radius:12px;
+  margin:10px 0;
+}
+
+.plan input{
+  width:20px;
+  height:20px;
+  accent-color:#ff6fce;
+}
+
+.plan.done{
+  background:#19372f;
+  color:#b7ebd2;
+}
+
+input[type=text]{
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  background:#0a0918;
+  border:1px solid #51416c;
+  color:white;
+}
+
+/* SECRET */
+
+.secret{
+  text-align:center;
+  padding:25px 5px;
+}
+
+.lock{
+  font-size:85px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.lock:hover{
+  transform:scale(1.12);
+}
+
+#secretMessage{
+  display:none;
+}
+
+/* NAV */
+
+.bottomNav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:75px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:7px;
+  background:#0b0918f5;
+  border-top:1px solid #332849;
+  padding:8px;
+  z-index:50;
+}
+
+.navBtn{
+  flex:1;
+  max-width:180px;
+  height:55px;
+  border:0;
+  border-radius:12px;
+  background:#201a35;
+  color:#b9b0d8;
+  font-size:11px;
+  transition:.2s;
+}
+
+.navBtn.active{
+  background:linear-gradient(100deg,#a445ba,#5146b5);
+  color:white;
+}
+
+footer{
+  text-align:center;
+  color:#77728f;
+  font-size:12px;
+  margin-top:30px;
+}
+
+/* FLOATING PARTICLES */
+
+#particles{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:100;
+  overflow:hidden;
+}
+
+.float{
+  position:absolute;
+  bottom:-30px;
+  animation:rise 4s linear forwards;
+}
+
+@keyframes rise{
+  to{
+    transform:translateY(-110vh) rotate(40deg);
+    opacity:0;
+  }
+}
+
+#toast{
+  position:fixed;
+  bottom:90px;
+  left:50%;
+  transform:translateX(-50%);
+  display:none;
+  background:#292044;
+  border:1px solid #b66ae6;
+  padding:13px 20px;
+  border-radius:25px;
+  z-index:120;
+  text-align:center;
+  max-width:90%;
+}
+
+/* MOBILE */
+
+@media(max-width:550px){
+
+  #app{
+    padding:15px 12px 100px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .memoryGrid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .card{
+    padding:17px;
+  }
+
+  .bottomNav{
+    gap:4px;
+  }
+
+  .navBtn{
+    font-size:9px;
+    padding:3px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+
+<section id="intro">
+
+<div id="stars"></div>
+
+<div class="introHeart">💜</div>
+
+<div class="introTitle">HEY, PRIYANKA!</div>
+
+<div class="introSub">A LITTLE WORLD MADE JUST FOR YOU</div>
+
+<p style="color:#c6bddf;margin-top:25px">
+I've made something small but special for you...
+</p>
+
+<button class="startBtn" onclick="startApp()">
+OPEN YOUR SURPRISE ✨
+</button>
+
+</section>
+
+
+<!-- APP -->
+
+<section id="app">
+
+<div class="topline">
+<span>✦ PRIYANKA'S LITTLE UNIVERSE</span>
+<span id="clock">💜</span>
+</div>
+
+
+<div class="header">
+
+<h1>💜 A LITTLE WORLD FOR PRIYANKA</h1>
+
+<p>
+Because good friendships deserve good memories.
+</p>
+
+</div>
+
+
+<!-- HOME -->
+
+<section id="home" class="page active">
+
+<div class="container">
+
+<div class="hero">
+
+<div class="heroHeart">💜</div>
+
+<h1>Priyanka</h1>
+
+<p>
+A small website made by <b>Divyam</b>, just to make you smile. ✨
+</p>
+
+</div>
+
+
+<div class="friendBadge">
+
+💫 <strong>PRIYANKA × DIVYAM</strong> 💫
+
+<br>
+
+<span class="muted">
+Two people · Random conversations · Lots of memories
+</span>
+
+</div>
+
+
+<div class="card">
+
+<h2>Hey Priyanka! 👋</h2>
+
+<p class="muted">
+
+I made this little website specially for you.
+Nothing complicated — just a collection of some fun things,
+memories and a few surprises.
+
+Hope you enjoy exploring it! 😄
+
+</p>
+
+<button class="btn" onclick="showPage('letterPage',1)">
+READ THE MESSAGE →
+</button>
+
+</div>
+
+
+<div class="grid">
+
+<div class="card">
+
+<h2>📸 Memory Wall</h2>
+
+<p class="muted">
+Some little moments worth remembering.
+</p>
+
+<button class="btn secondary"
+onclick="showPage('memoryPage',3)">
+Explore →
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h2>🎮 Friendship Quiz</h2>
+
+<p class="muted">
+Let's see how well you know this friendship!
+</p>
+
+<button class="btn secondary"
+onclick="showPage('gamePage',2)">
+Play →
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h2>🌈 Future Plans</h2>
+
+<p class="muted">
+Some fun things to do someday.
+</p>
+
+<button class="btn secondary"
+onclick="showPage('futurePage',4)">
+View Plans →
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h2>🔐 Secret Folder</h2>
+
+<p class="muted">
+Okay... this one is actually a secret. 👀
+</p>
+
+<button class="btn secondary"
+onclick="showPage('secretPage',5)">
+Unlock →
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- LETTER -->
+
+<section id="letterPage" class="page">
+
+<div class="container">
+
+<div class="card">
+
+<h2>💌 A Message For You</h2>
+
+<p class="muted">
+Some things are easier to write than say.
+</p>
+
+<div class="divider"></div>
+
+<div id="letter" class="bigText">
+There's a message waiting...
+</div>
+
+<div style="text-align:center">
+
+<button class="btn" onclick="openLetter()">
+OPEN MESSAGE 💜
+</button>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>🌷 Random Compliment</h2>
+
+<p id="compliment" class="muted">
+Tap below whenever you need a random positive message.
+</p>
+
+<button class="btn secondary"
+onclick="newCompliment()">
+GENERATE ✨
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- GAME -->
+
+<section id="gamePage" class="page">
+
+<div class="container">
+
+<div class="card">
+
+<h2>🎮 Friendship Quiz</h2>
+
+<p id="question">
+Ready to play?
+</p>
+
+<div id="answers"></div>
+
+<p id="quizResult" class="muted"></p>
+
+<div class="progress">
+<div id="quizProgress" class="fill"></div>
+</div>
+
+<p id="quizScore" class="muted">
+Score: 0
+</p>
+
+<button class="btn secondary"
+onclick="restartQuiz()">
+RESTART ↻
+</button>
+
+</div>
+
+
+<div class="card" style="text-align:center">
+
+<h2>💜 Heart Collector</h2>
+
+<p class="muted">
+Just for fun. How many can you collect?
+</p>
+
+<div class="bigText" id="heartCount">
+0 💜
+</div>
+
+<button class="btn"
+onclick="catchHeart()">
+CATCH A HEART 💜
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MEMORIES -->
+
+<section id="memoryPage" class="page">
+
+<div class="container">
+
+<div class="card">
+
+<h2>📸 Memory Wall</h2>
+
+<p class="muted">
+Tap each card to reveal something.
+You can replace these with your actual memories later.
+</p>
+
+</div>
+
+<div class="memoryGrid" id="memories"></div>
+
+</div>
+
+</section>
+
+
+<!-- FUTURE -->
+
+<section id="futurePage" class="page">
+
+<div class="container">
+
+<div class="card">
+
+<h2>🌈 Future Bucket List</h2>
+
+<p class="muted">
+Some random things we should try someday.
+</p>
+
+<div id="plans"></div>
+
+<div class="progress">
+<div id="planProgress" class="fill"></div>
+</div>
+
+<p id="planCount" class="muted">
+0 completed
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>✨ Add Your Own</h2>
+
+<input
+id="planInput"
+type="text"
+placeholder="Write something fun..."
+>
+
+<button class="btn"
+onclick="addPlan()">
+ADD TO LIST +
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SECRET -->
+
+<section id="secretPage" class="page">
+
+<div class="container">
+
+<div class="card secret">
+
+<h2>🔐 The Secret Folder</h2>
+
+<p class="muted">
+There may or may not be something hidden here... 👀
+</p>
+
+<div
+class="lock"
+id="lock"
+onclick="unlock()">
+🔒
+</div>
+
+<button class="btn"
+onclick="unlock()">
+UNLOCK 💜
+</button>
+
+
+<div id="secretMessage">
+
+<div class="divider"></div>
+
+<div class="bigText">
+
+Priyanka, you're genuinely a very good friend. 💜
+
+<br><br>
+
+Thanks for all the random talks,
+funny moments, jokes and memories.
+
+<br><br>
+
+Hopefully there are many more
+good memories ahead. ✨
+
+</div>
+
+<p class="muted">
+
+Keep being yourself, keep smiling,
+and don't let the boring days win. 😄
+
+</p>
+
+<div style="font-size:45px;margin-top:20px">
+💜✨🌷
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<footer>
+MADE WITH 💜 BY DIVYAM GUPTA · FOR PRIYANKA
+</footer>
+
+</section>
+
+
+<!-- NAV -->
+
+<nav class="bottomNav" id="nav" style="display:none">
+
+<button class="navBtn active"
+onclick="showPage('home',0)">
+🏠<br>HOME
+</button>
+
+<button class="navBtn"
+onclick="showPage('letterPage',1)">
+💌<br>MESSAGE
+</button>
+
+<button class="navBtn"
+onclick="showPage('gamePage',2)">
+🎮<br>GAMES
+</button>
+
+<button class="navBtn"
+onclick="showPage('memoryPage',3)">
+📸<br>MEMORIES
+</button>
+
+<button class="navBtn"
+onclick="showPage('futurePage',4)">
+🌈<br>PLANS
+</button>
+
+<button class="navBtn"
+onclick="showPage('secretPage',5)">
+🔐<br>SECRET
+</button>
+
+</nav>
+
+
+<div id="particles"></div>
+<div id="toast"></div>
+
+
+<script>
+
+/* =========================
+   SOUND EFFECT SYSTEM
+========================= */
+
+let audioCtx=null;
+
+function initAudio(){
+
+  if(!audioCtx){
+    audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+  }
+
+}
+
+function sound(type="click"){
+
+  try{
+
+    initAudio();
+
+    const osc=audioCtx.createOscillator();
+    const gain=audioCtx.createGain();
+
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    if(type==="open"){
+
+      osc.frequency.setValueAtTime(450,audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(
+        800,
+        audioCtx.currentTime+.25
+      );
+
+    }
+
+    else if(type==="success"){
+
+      osc.frequency.setValueAtTime(500,audioCtx.currentTime);
+      osc.frequency.setValueAtTime(700,audioCtx.currentTime+.12);
+      osc.frequency.setValueAtTime(900,audioCtx.currentTime+.24);
+
+    }
+
+    else{
+
+      osc.frequency.setValueAtTime(
+        550,
+        audioCtx.currentTime
+      );
+
+      osc.frequency.exponentialRampToValueAtTime(
+        750,
+        audioCtx.currentTime+.08
+      );
+
+    }
+
+    gain.gain.setValueAtTime(.0001,audioCtx.currentTime);
+
+    gain.gain.exponentialRampToValueAtTime(
+      .08,
+      audioCtx.currentTime+.01
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+      .0001,
+      audioCtx.currentTime+.3
+    );
+
+    osc.start();
+    osc.stop(audioCtx.currentTime+.3);
+
+  }catch(e){}
+
+}
+
+
+/* =========================
+   INTRO STARS
+========================= */
+
+for(let i=0;i<70;i++){
+
+  const s=document.createElement('span');
+
+  s.className='star';
+
+  s.textContent='✦';
+
+  s.style.left=Math.random()*100+'%';
+
+  s.style.top=Math.random()*100+'%';
+
+  s.style.fontSize=(5+Math.random()*12)+'px';
+
+  s.style.animationDelay=Math.random()*3+'s';
+
+  document.getElementById('stars').appendChild(s);
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+function startApp(){
+
+  sound("open");
+
+  document.getElementById('intro').style.display='none';
+
+  document.getElementById('app').style.display='block';
+
+  document.getElementById('nav').style.display='flex';
+
+  hearts();
+
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function showPage(id,index){
+
+  sound("click");
+
+  document.querySelectorAll('.page')
+  .forEach(p=>p.classList.remove('active'));
+
+  document.getElementById(id)
+  .classList.add('active');
+
+  document.querySelectorAll('.navBtn')
+  .forEach(b=>b.classList.remove('active'));
+
+  document.querySelectorAll('.navBtn')[index]
+  .classList.add('active');
+
+  window.scrollTo({
+    top:0,
+    behavior:'smooth'
+  });
+
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+function toast(msg){
+
+  const t=document.getElementById('toast');
+
+  t.textContent=msg;
+
+  t.style.display='block';
+
+  clearTimeout(window.toastTimer);
+
+  window.toastTimer=setTimeout(()=>{
+    t.style.display='none';
+  },2300);
+
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+function openLetter(){
+
+  sound("success");
+
+  document.getElementById('letter').innerHTML=`
+
+  Hey Priyanka! 💜
+
+  <br><br>
+
+  I made this little website just for you because
+  sometimes a simple message isn't enough to show
+  how much a friendship can mean.
+
+  <br><br>
+
+  Thanks for all the random conversations,
+  funny moments, jokes and the countless
+  "kuch nahi 😂" type replies.
+
+  <br><br>
+
+  We've had some good moments,
+  and hopefully there are many more ahead.
+
+  <br><br>
+
+  <b>Stay the same crazy, genuine person you are. ✨</b>
+
+  <br><br>
+
+  — Divyam
+
+  `;
+
+  hearts();
+
+}
+
+
+/* =========================
+   COMPLIMENTS
+========================= */
+
+const compliments=[
+
+  "You're genuinely a fun person to have around. 😄",
+
+  "Your vibe is pretty unique. ✨",
+
+  "You somehow make random conversations entertaining. 😂",
+
+  "You're a good friend. Don't forget that. 💜",
+
+  "Some people just make ordinary days better. You're one of them. 🌷",
+
+  "Keep smiling, Priyanka! 😄"
+
+];
+
+function newCompliment(){
+
+  sound("success");
+
+  document.getElementById('compliment')
+  .textContent=
+  compliments[
+    Math.floor(Math.random()*compliments.length)
+  ];
+
+  hearts();
+
+}
+
+
+/* =========================
+   MEMORY WALL
+========================= */
+
+const memoryData=[
+
+  [
+    "💬",
+    "Random Conversations",
+    "Those conversations that start with nothing and somehow go everywhere. 😂"
+  ],
+
+  [
+    "😂",
+    "Funny Moments",
+    "The moments where neither of us could keep a straight face."
+  ],
+
+  [
+    "🫶",
+    "Good Support",
+    "Being there when a friend needs someone."
+  ],
+
+  [
+    "🤫",
+    "Inside Jokes",
+    "Some jokes simply don't make sense to anyone else."
+  ],
+
+  [
+    "🌈",
+    "Good Days",
+    "The simple days that become good memories."
+  ],
+
+  [
+    "✨",
+    "More Memories",
+    "The best part is that this wall isn't finished yet."
+  ]
+
+];
+
+memoryData.forEach(m=>{
+
+  const div=document.createElement('div');
+
+  div.className='memory';
+
+  div.innerHTML=
+  `<span>${m[0]}</span>
+   <b>${m[1]}</b>`;
+
+  div.onclick=()=>{
+
+    sound("click");
+
+    div.innerHTML=
+    `<span>${m[0]}</span>
+     <b>${m[1]}</b>
+     <p>${m[2]}</p>`;
+
+  };
+
+  document.getElementById('memories')
+  .appendChild(div);
+
+});
+
+
+/* =========================
+   FRIENDSHIP QUIZ
+========================= */
+
+const questions=[
+
+ {
+  q:"What makes a good friendship?",
+  a:[
+    "Trust & laughter",
+    "Never talking",
+    "Only homework"
+  ],
+  c:0
+ },
+
+ {
+  q:"What should good friends collect?",
+  a:[
+    "Good memories",
+    "More stress",
+    "Boring days"
+  ],
+  c:0
+ },
+
+ {
+  q:"What's important between friends?",
+  a:[
+    "Being real & supportive",
+    "Ignoring each other",
+    "Always arguing"
+  ],
+  c:0
+ },
+
+ {
+  q:"What's the vibe of this website?",
+  a:[
+    "A friendship gift 💜",
+    "A maths exam",
+    "A boring lecture"
+  ],
+  c:0
+ }
+
+];
+
+let qi=0;
+let score=0;
+let answered=false;
+
+
+function renderQuiz(){
+
+  answered=false;
+
+  const q=questions[qi];
+
+  document.getElementById('question')
+  .textContent=
+  `Question ${qi+1}/${questions.length}: ${q.q}`;
+
+  document.getElementById('answers')
+  .innerHTML='';
+
+  document.getElementById('quizResult')
+  .textContent='';
+
+  document.getElementById('quizProgress')
+  .style.width=
+  (qi/questions.length*100)+'%';
+
+
+  q.a.forEach((a,i)=>{
+
+    const b=document.createElement('button');
+
+    b.className='answerBtn';
+
+    b.textContent=a;
+
+    b.onclick=()=>answer(i);
+
+    document.getElementById('answers')
+    .appendChild(b);
+
+  });
+
+}
+
+
+function answer(i){
+
+  if(answered)return;
+
+  answered=true;
+
+  if(i===questions[qi].c){
+
+    score++;
+
+    sound("success");
+
+    document.getElementById('quizResult')
+    .textContent=
+    "Correct! You know this friendship well! 💜";
+
+  }else{
+
+    sound("click");
+
+    document.getElementById('quizResult')
+    .textContent=
+    "Nice try! 😄";
+
+  }
+
+  document.getElementById('quizScore')
+  .textContent=
+  'Score: '+score;
+
+  document.querySelectorAll('.answerBtn')
+  .forEach(b=>b.disabled=true);
+
+  qi++;
+
+  setTimeout(()=>{
+
+    if(qi<questions.length){
+
+      renderQuiz();
+
+    }else{
+
+      sound("success");
+
+      document.getElementById('question')
+      .textContent=
+      'Quiz completed! 🎉';
+
+      document.getElementById('answers')
+      .innerHTML='';
+
+      document.getElementById('quizProgress')
+      .style.width='100%';
+
+      document.getElementById('quizResult')
+      .textContent=
+      `Final score: ${score}/${questions.length} 💜`;
+
+    }
+
+  },900);
+
+}
+
+
+function restartQuiz(){
+
+  sound("click");
+
+  qi=0;
+
+  score=0;
+
+  document.getElementById('quizScore')
+  .textContent='Score: 0';
+
+  renderQuiz();
+
+}
+
+
+/* =========================
+   HEART COLLECTOR
+========================= */
+
+let heartCount=0;
+
+function catchHeart(){
+
+  heartCount++;
+
+  sound("click");
+
+  document.getElementById('heartCount')
+  .textContent=
+  heartCount+' 💜';
+
+  if(heartCount%10===0){
+
+    sound("success");
+
+    toast(
+      '10 hearts collected! 🎉'
+    );
+
+  }
+
+  hearts();
+
+}
+
+
+/* =========================
+   FUTURE PLANS
+========================= */
+
+let plans=[
+
+ {
+  text:'Have a movie night 🍿',
+  done:false
+ },
+
+ {
+  text:'Take some funny photos 📸',
+  done:false
+ },
+
+ {
+  text:'Try a new café ☕',
+  done:false
+ },
+
+ {
+  text:'Go somewhere fun 🌍',
+  done:false
+ },
+
+ {
+  text:'Have one completely random day 😂',
+  done:false
+ },
+
+ {
+  text:'Make more unforgettable memories 💜',
+  done:false
+ }
+
+];
+
+
+function renderPlans(){
+
+  const box=document.getElementById('plans');
+
+  box.innerHTML='';
+
+  plans.forEach(p=>{
+
+    const label=document.createElement('label');
+
+    label.className=
+    'plan'+(p.done?' done':'');
+
+    const cb=document.createElement('input');
+
+    cb.type='checkbox';
+
+    cb.checked=p.done;
+
+    cb.onchange=()=>{
+
+      p.done=cb.checked;
+
+      sound("click");
+
+      renderPlans();
+
+    };
+
+
+    const span=document.createElement('span');
+
+    span.textContent=p.text;
+
+    label.append(cb,span);
+
+    box.appendChild(label);
+
+  });
+
+
+  const done=
+  plans.filter(p=>p.done).length;
+
+  document.getElementById('planCount')
+  .textContent=
+  `${done} / ${plans.length} plans completed`;
+
+  document.getElementById('planProgress')
+  .style.width=
+  (plans.length?
+   done/plans.length*100:
+   0)+'%';
+
+}
+
+
+function addPlan(){
+
+  const input=
+  document.getElementById('planInput');
+
+  const val=input.value.trim();
+
+  if(!val){
+
+    sound("click");
+
+    return toast(
+      'Write something first! ✨'
+    );
+
+  }
+
+  plans.push({
+    text:val,
+    done:false
+  });
+
+  input.value='';
+
+  sound("success");
+
+  renderPlans();
+
+  toast(
+    'Added to the list! 💜'
+  );
+
+}
+
+
+/* =========================
+   SECRET
+========================= */
+
+function unlock(){
+
+  sound("success");
+
+  document.getElementById('lock')
+  .textContent='💜';
+
+  document.getElementById('secretMessage')
+  .style.display='block';
+
+  hearts();
+
+}
+
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+function hearts(){
+
+  for(let i=0;i<15;i++){
+
+    const el=document.createElement('span');
+
+    el.className='float';
+
+    el.textContent=[
+      '💜',
+      '💗',
+      '✨',
+      '🌷'
+    ][
+      Math.floor(Math.random()*4)
+    ];
+
+    el.style.left=
+    Math.random()*100+'%';
+
+    el.style.fontSize=
+    (15+Math.random()*22)+'px';
+
+    document.getElementById('particles')
+    .appendChild(el);
+
+    setTimeout(()=>{
+      el.remove();
+    },4000);
+
+  }
+
+}
+
+
+/* =========================
+   CLOCK
+========================= */
+
+setInterval(()=>{
+
+  document.getElementById('clock')
+  .textContent=
+  new Date().toLocaleTimeString([],{
+    hour:'2-digit',
+    minute:'2-digit',
+    second:'2-digit'
+  })+' 💜';
+
+},1000);
+
+
+/* INITIALIZE */
+
+renderQuiz();
+renderPlans();
+
+</script>
+
+</body>
+</html>
